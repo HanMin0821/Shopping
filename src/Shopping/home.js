@@ -3,9 +3,11 @@ import * as client from "./clients";
 import {findAllItems, update} from "./clients";
 import {Link} from "react-router-dom";
 import {BsPencil, BsTrash3Fill} from "react-icons/bs";
+import "./index.css"
 
 function Home() {
     const [items, setItems] = useState([]);
+    const [isCreateMode, setIsCreateMode] = useState(true);
     const [item, setItem] = useState({
         name: "",
         category: "",
@@ -20,12 +22,12 @@ function Home() {
         setItems(items);
     };
 
-    const createItem = async ()=>{
-        try{
-            const newItem = await client.createItem(item);
-            setItems([newItem, ...items]);
-
-        }catch(err){
+    const createItem = async () => {
+        try {
+            delete item._id;
+            await client.createItem(item);
+            fetchItems();
+        } catch (err) {
             console.log(err);
         }
     }
@@ -33,21 +35,22 @@ function Home() {
     const deleteItem = async (item) => {
         try {
             await client.deleteItem(item);
-            setItems(items.filter((i) => i._id !== item._id));
+            fetchItems();
         } catch (err) {
             console.log(err);
         }
     }
 
-
     const chosenItem = async (item) => {
+        setIsCreateMode(false);
         const seletedItem = await client.findItemById(item._id);
         setItem(seletedItem);
     }
     const updateItem = async () => {
         try {
             await client.update(item);
-            setItems(items.map((i) => i._id === item._id ? item : i));
+            fetchItems();
+            setIsCreateMode(true);
         } catch (err) {
             console.log(err);
         }
@@ -58,15 +61,11 @@ function Home() {
         fetchItems();
     }, []);
 
-
+    let createButton = <button className="btn btn-success wd-30 float-end" onClick={createItem}>Post Product</button>
+    let updateButton = <button className="btn btn-primary wd-30 float-end" onClick={updateItem}>Update Product</button>;
     return (
         <div className="row">
             <div className="col-9">
-                <input className={"w-75"} placeholder={"Search..." }/>
-                <br/>
-                <button className={"btn btn-primary"}>Search</button>
-                <br/>
-                <br/>
 
                 <h2>Latest Products</h2>
                 <hr/>
@@ -91,8 +90,12 @@ function Home() {
                             <td>{item.description}</td>
                             <td>{item.price}</td>
                             <td>
-                                <button className="btn btn-danger wd-50 float-end" onClick={()=>deleteItem(item)} >Delete</button>
-                                <button className="btn btn-warning wd-50 float-end" onClick={()=>chosenItem(item)}>Edit</button>
+                                <button className="btn btn-danger wd-50 float-end"
+                                        onClick={() => deleteItem(item)}>Delete
+                                </button>
+                                <button className="btn btn-warning wd-50 float-end"
+                                        onClick={() => chosenItem(item)}>Edit
+                                </button>
                             </td>
                         </tr>))}
                     </tbody>
@@ -108,10 +111,9 @@ function Home() {
                     <br/>
 
 
-
                     <label htmlFor="text-fields-category">Category:</label>
                     <br/>
-                    <input id="text-fields-category"  value={item.category}
+                    <input id="text-fields-category" value={item.category}
                            onChange={(e) => setItem({...item, category: e.target.value})}/><br/>
 
                     <label htmlFor="text-fields-price">Price:</label>
@@ -121,9 +123,7 @@ function Home() {
                            onChange={(e) => setItem({...item, price: e.target.value})}/><br/>
 
 
-
-
-                    <label htmlFor="text-fields-email" >Email of Seller:</label>
+                    <label htmlFor="text-fields-email">Email of Seller:</label>
                     <br/>
                     <input id="text-fields-email" value={item.email}
                            onChange={(e) => setItem({...item, email: e.target.value})}/><br/>
@@ -132,7 +132,7 @@ function Home() {
                     <br/>
                     <input id="text-fields-productionDate"
                            value={item.productionDate}
-                           placeholder= "mm/dd/yyyy"
+                           placeholder="mm/dd/yyyy"
                            onChange={(e) => setItem({...item, productionDate: e.target.value})}/><br/>
 
                     <label htmlFor="text-fields-expirationDate">Expiration Date</label>
@@ -148,10 +148,9 @@ function Home() {
                     <br/>
 
                     <textarea id="text-fields-description" value={item.description}
-                           onChange={(e) => setItem({...item, description: e.target.value})}/><br/>
+                              onChange={(e) => setItem({...item, description: e.target.value})}/><br/>
                     <row>
-                        <button className="btn btn-primary wd-30 float-end" onClick={updateItem}>Update Product</button>
-                        <button className="btn btn-success wd-30 float-end" onClick={createItem}>Post Product</button>
+                        {isCreateMode ? createButton : updateButton}
                     </row>
 
                 </form>

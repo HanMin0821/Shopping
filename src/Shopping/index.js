@@ -10,6 +10,7 @@ import Search from "./search";
 import { useState } from "react";
 import {API_KEY} from "./clients";
 import Details_Toko from "./details_Toko";
+import "./index.css"
 
 function Shopping(){
     const [key, setKey] = useState("home");
@@ -17,29 +18,27 @@ function Shopping(){
     return(
 
         <div className="container-fluid">
-            {/*<pre>{JSON.stringify(process.env, null,2)}</pre>*/}
-
             <h1>Shopping</h1>
             <div className="row">
                 <div className="col-2">
                     <div className="list-group">
-                        <Link to = "/" className="list-group-item">
+                        <Link to = "/" className="list-group-item list-group-item-primary" >
                             Home
                         </Link>
 
-                        {/* <Link to = "/Shopping/account" className="list-group-item">
-                            Account
-                        </Link> */}
-                        <Link to = "/shopping/search" className="list-group-item">
+                        {/*<Link to = "/shopping/account" className="list-group-item list-group-item-primary">*/}
+                        {/*    Account*/}
+                        {/*</Link>*/}
+                        <Link to = "/shopping/search" className="list-group-item list-group-item-primary">
                             Search
                         </Link>
-                        <Link to = "/Shopping/signup" className="list-group-item">
+                        <Link to = "/shopping/signup" className="list-group-item list-group-item-primary">
                             Signup
                         </Link>
-                        <Link to = "/Shopping/signin" className="list-group-item">
+                        <Link to = "/shopping/signin" className="list-group-item list-group-item-primary">
                             SignIn
                         </Link>
-                        <Link to = "/Shopping/profile" className="list-group-item">
+                        <Link to = "/shopping/profile" className="list-group-item list-group-item-primary">
                             Profile
                         </Link>
                     </div>
