@@ -27,9 +27,9 @@ function Shopping(){
                             Home
                         </Link>
 
-                        <Link to = "/Shopping/account" className="list-group-item">
+                        {/* <Link to = "/Shopping/account" className="list-group-item">
                             Account
-                        </Link>
+                        </Link> */}
                         <Link to = "/shopping/search" className="list-group-item">
                             Search
                         </Link>
@@ -39,9 +39,9 @@ function Shopping(){
                         <Link to = "/Shopping/signin" className="list-group-item">
                             SignIn
                         </Link>
-                        {/* <Link to = "/Shopping/profile" className="list-group-item">
+                        <Link to = "/Shopping/profile" className="list-group-item">
                             Profile
-                        </Link> */}
+                        </Link>
                     </div>
                 </div>
                 <div className="col-10">
@@ -56,7 +56,7 @@ function Shopping(){
                         <Route path = "/details/Toko/:id" element={<Details_Toko/>}/>
                         {/* <Route path="/users" element={<UserList />} /> */}
                         <Route path="/users/table" element={<UserTable />} />
-                        {/* <Route path="/profile" element={<ProfilePage />} /> */}
+                        <Route path="/profile" element={<UserTable />} />
                     </Routes>
                 </div>
             </div>

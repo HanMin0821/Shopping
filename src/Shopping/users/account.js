@@ -3,19 +3,24 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./account.css";
 // import { useDispatch } from "react-redux";
-import { setCurrentUser } from "./reducer";
+import useAuth from './useAuth'; // Import the custom hook
+
 function Account() {
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
+
+  useAuth(); // This will handle the authentication check and redirect
   // const dispatch = useDispatch();
   const fetchUser = async () => {
     try {
       const user = await client.account();
+      console.log("Fetched user:", user); // Add this for debugging
       setAccount(user);
     } catch (error) {
+      console.error("Error fetching user:", error); // More detailed logging
       navigate("/Shopping/signin");
     }
-  };
+  };  
   const save = async () => {
     await client.updateUser(account);
   };
