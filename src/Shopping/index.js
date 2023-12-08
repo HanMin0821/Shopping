@@ -1,9 +1,10 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Home from "./home";
-import Signin from "./signIn";
-import Signout from "./signout";
-import Account from "./account";
-import Signup from "./signup";
+import Signin from "./users/signin";
+import Account from "./users/account";
+import Signup from "./users/signup";
+import UserTable from "./users/table";
+import ProfilePage from "./proflie";
 import Detail from"./detail"
 import Search from "./search";
 import { useState } from "react";
@@ -12,8 +13,7 @@ import Details_Toko from "./details_Toko";
 
 function Shopping(){
     const [key, setKey] = useState("home");
-
-
+    const { pathname } = useLocation();
     return(
 
         <div className="container-fluid">
@@ -27,22 +27,21 @@ function Shopping(){
                             Home
                         </Link>
 
-                        <Link to = "/shopping/account" className="list-group-item">
+                        <Link to = "/Shopping/account" className="list-group-item">
                             Account
                         </Link>
                         <Link to = "/shopping/search" className="list-group-item">
                             Search
                         </Link>
-                        <Link to = "/shopping/signup" className="list-group-item">
+                        <Link to = "/Shopping/signup" className="list-group-item">
                             Signup
                         </Link>
-                        <Link to = "/shopping/signin" className="list-group-item">
+                        <Link to = "/Shopping/signin" className="list-group-item">
                             SignIn
                         </Link>
-                        <Link to = "/shopping/signout" className="list-group-item">
-                            SignOut
-                        </Link>
-
+                        {/* <Link to = "/Shopping/profile" className="list-group-item">
+                            Profile
+                        </Link> */}
                     </div>
                 </div>
                 <div className="col-10">
@@ -51,11 +50,13 @@ function Shopping(){
                         <Route path = "/item/:id" element={<Detail/>}/>
                         <Route path = "/search" element={<Search/>}/>
                         <Route path = "/signin" element={<Signin/>}/>
-                        <Route path = "/signout" element={<Signout/>}/>
+                        {/* <Route path = "/signout" element={<Signout/>}/> */}
                         <Route path = "/account" element={<Account/>}/>
                         <Route path = "/signup" element={<Signup/>}/>
                         <Route path = "/details/Toko/:id" element={<Details_Toko/>}/>
-
+                        {/* <Route path="/users" element={<UserList />} /> */}
+                        <Route path="/users/table" element={<UserTable />} />
+                        {/* <Route path="/profile" element={<ProfilePage />} /> */}
                     </Routes>
                 </div>
             </div>

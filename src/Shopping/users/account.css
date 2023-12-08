@@ -1,0 +1,52 @@
+.account-container {
+    max-width: 768px;
+    margin: auto;
+  }
+  
+  .account-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .account-form label {
+    font-weight: bold;
+  }
+  
+  .account-form input,
+  .account-form select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .save-button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .signout-button {
+    background-color: red;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .users-button {
+    background-color: #ffc107;
+    color: black;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+  }

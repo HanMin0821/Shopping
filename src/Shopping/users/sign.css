@@ -1,0 +1,33 @@
+.signup-container {
+    max-width: 300px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .signup-container h1 {
+    margin-bottom: 20px;
+  }
+  
+  .signup-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .signup-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
