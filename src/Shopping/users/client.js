@@ -64,3 +64,23 @@ export const createUser = async (user) => {
     const response = await request.get(`${PROFILES_API}/${id}`);
     return response.data;
   };
+
+ // In your client.js
+  export const fetchLikedItemsByUserId = async (userId) => {
+    const response = await axios.get(`${USERS_API}/${userId}/liked-items`);
+    return response.data;
+}
+
+  export const getCurrentUserId = async () => {
+    const response = await axios.get(`${USERS_API}/current-user-id`, { withCredentials: true });
+    return response.data.userId;
+};
+// In your frontend client.js
+
+export const findItemsBySeller = async (sellerId) => {
+  const response = await axios.get(`${BASE_API}/api/items/seller/${sellerId}`);
+  return response.data;
+};
+
+
+  

@@ -11,7 +11,7 @@ function ProfilesList() {
             try {
                 const profilesData = await findAllUserProfiles();
                 setProfiles(profilesData);
-                groupProfilesByRole(profilesData); // Call the grouping function
+                groupProfilesByRole(profilesData);
             } catch (error) {
                 console.error('Error fetching profiles:', error);
             }

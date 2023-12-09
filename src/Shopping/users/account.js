@@ -4,30 +4,53 @@ import { Link, useNavigate } from "react-router-dom";
 import "./account.css";
 // import { useDispatch } from "react-redux";
 import useAuth from './useAuth'; // Import the custom hook
+import { fetchLikedItemsByUserId} from "./client";
+
+// function extractRealSlug(url) {
+//   const slugIndex = url.indexOf('slug=');
+//   if (slugIndex === -1) {
+//       return '';
+//   }
+//   return url.substring(slugIndex + 5);
+// }
 
 function Account({ setIsAuthenticated }) {
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
+  const [likedItemIds, setLikedItemIds] = useState([]);
+  // const userId = getCurrentUserId
 
   useAuth(); // This will handle the authentication check and redirect
   // const dispatch = useDispatch();
   const fetchUser = async () => {
     try {
       const user = await client.account();
-      console.log("Fetched user:", user); // Add this for debugging
-      setAccount(user);
+      if (user) {
+        setAccount(user);
+        loadLikedItemIds(user._id); // Load liked items for this user
+      }
     } catch (error) {
-      console.error("Error fetching user:", error); // More detailed logging
+      console.error("Error fetching user:", error);
       navigate("/Shopping/signin");
     }
-  };  
+  };
+
+  const loadLikedItemIds = async (userId) => {
+    try {
+        const itemIds = await fetchLikedItemsByUserId(userId);
+        setLikedItemIds(itemIds);
+    } catch (error) {
+        console.error('Error fetching liked item IDs:', error);
+    }
+};
+
+
   const save = async () => {
     await client.updateUser(account);
   };
   const signout = async () => {
     const status = await client.signout();
     setIsAuthenticated(false);
-    // dispatch(setCurrentUser(null));
     navigate("/Shopping/signin");
   };
 
@@ -112,6 +135,17 @@ function Account({ setIsAuthenticated }) {
               Users
             </Link>
           )}
+          {/* Liked Items Section */}
+          <h2>My Liked Items</h2>
+          <ul>
+              {likedItemIds.map(itemId => (
+                <li key={itemId}>
+                    <Link to={`/shopping/details/Toko/${encodeURIComponent(itemId)}`}>Item ID: {itemId}</Link>
+                </li>
+              ))}
+          </ul>
+{/* <pre>{JSON.stringify(likedItemIds)}</pre> */}
+
         </div>
       )}
     </div>

@@ -60,7 +60,7 @@ function Shopping(){
                         {/* <Route path="/users" element={<UserList />} /> */}
                         <Route path="/users/table" element={<UserTable />} />
                         <Route path="/profiles" element={<ProfilesList />} />
-                        <Route path="/profiles/:profileId" element={<ProfilePage />} />
+                        <Route path="/profiles/:profileId" element={<ProfilePage isAuthenticated={isAuthenticated}/>} />
                     </Routes>
                 </div>
             </div>
