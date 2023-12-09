@@ -9,8 +9,17 @@ export const createUserLikeItem = async (itemId, userId) => {
     const response = await axios.post(`${ITEM_API}/${encodeURIComponent(itemId)}/like/${userId}`);
     return response.data;
 }
+export const createUserLikeHomeItem = async (itemId, userId) => {
+    const response = await axios.post(`${ITEM_API}/${itemId}/like/${userId}`);
+    return response.data;
+}
 
 export const findAllLikes = async (itemId) => {
     const response = await axios.get(`${ITEM_API}/like/${encodeURIComponent(itemId)}`);
+    return response.data;
+}
+
+export const deleteUserLikeItem = async (itemId, userId) => {
+    const response = await axios.delete(`${ITEM_API}/${encodeURIComponent(itemId)}/like/${userId}`);
     return response.data;
 }
