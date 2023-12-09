@@ -6,6 +6,7 @@ const request = axios.create({
 
 export const BASE_API = process.env.REACT_APP_API_BASE;
 export const USERS_API = `${BASE_API}/api/users`;
+export const PROFILES_API = `${BASE_API}/api/profiles`
 
 export const createUser = async (user) => {
     const response = await request.post(`${USERS_API}`, user);
@@ -28,7 +29,7 @@ export const createUser = async (user) => {
   };
   
   export const account = async () => {
-    const response = await request.post(`${USERS_API}/account`);
+    const response = await request.post(`${USERS_API}/profile`);
     return response.data;
   };
   
@@ -49,5 +50,17 @@ export const createUser = async (user) => {
   
   export const deleteUser = async (id) => {
     const response = await request.delete(`${USERS_API}/${id}`);
+    return response.data;
+  };
+
+  // Function to fetch all user profiles (only usernames)
+  export const findAllUserProfiles = async () => {
+    const response = await request.get(PROFILES_API);
+    return response.data;
+  };
+
+  // Function to fetch a specific user's profile by ID
+  export const findUserProfileById = async (id) => {
+    const response = await request.get(`${PROFILES_API}/${id}`);
     return response.data;
   };

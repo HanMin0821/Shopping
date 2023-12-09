@@ -1,16 +1,20 @@
 import * as client from "./client";
 import { useState, useEffect} from "react";
 import { useNavigate, Link } from "react-router-dom";
-function Signin() {
+function Signin({ setIsAuthenticated }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  
   const signIn = async () => {
     try {
-      const credentials = { username: username, password: password };
+      const credentials = { username, password };
       const user = await client.signin(credentials);
-      navigate("/Shopping/account");
+      if (user) {
+        setIsAuthenticated(true); // Set authenticated state to true
+        navigate("/Shopping/profile");
+      }
     } catch (error) {
       if (error.response && error.response.status === 404) {
         setError("Username not found");

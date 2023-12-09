@@ -5,7 +5,7 @@ import "./account.css";
 // import { useDispatch } from "react-redux";
 import useAuth from './useAuth'; // Import the custom hook
 
-function Account() {
+function Account({ setIsAuthenticated }) {
   const [account, setAccount] = useState(null);
   const navigate = useNavigate();
 
@@ -26,6 +26,7 @@ function Account() {
   };
   const signout = async () => {
     const status = await client.signout();
+    setIsAuthenticated(false);
     // dispatch(setCurrentUser(null));
     navigate("/Shopping/signin");
   };

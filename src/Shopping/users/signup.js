@@ -15,7 +15,7 @@ function Signup() {
     // event.preventDefault();
     try {
       await client.signup(credentials);
-      navigate("/Shopping/account");
+      navigate("/Shopping/profile");
     } catch (err) {
       setError(err.response.data.message || "An error occurred");
     }

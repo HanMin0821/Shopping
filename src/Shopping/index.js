@@ -11,8 +11,10 @@ import { useState } from "react";
 import {API_KEY} from "./clients";
 import Details_Toko from "./details_Toko";
 import "./index.css"
+import ProfilesList from "./profilesList";
 
 function Shopping(){
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [key, setKey] = useState("home");
     const { pathname } = useLocation();
     return(
@@ -35,10 +37,12 @@ function Shopping(){
                         <Link to = "/shopping/signup" className="list-group-item list-group-item-primary">
                             Signup
                         </Link>
-                        <Link to = "/shopping/signin" className="list-group-item list-group-item-primary">
-                            SignIn
-                        </Link>
-                        <Link to = "/shopping/profile" className="list-group-item list-group-item-primary">
+                        {!isAuthenticated && (
+                            <Link to="/shopping/signin" className="list-group-item list-group-item-primary">
+                                SignIn
+                            </Link>
+                        )}
+                        <Link to = "/shopping/profiles" className="list-group-item list-group-item-primary">
                             Profile
                         </Link>
                     </div>
@@ -48,14 +52,15 @@ function Shopping(){
                         <Route path = "/" element={<Home/>}/>
                         <Route path = "/item/:id" element={<Detail/>}/>
                         <Route path = "/search" element={<Search/>}/>
-                        <Route path = "/signin" element={<Signin/>}/>
+                        <Route path = "/signin" element={<Signin setIsAuthenticated={setIsAuthenticated} />}/>
                         {/* <Route path = "/signout" element={<Signout/>}/> */}
-                        <Route path = "/account" element={<Account/>}/>
+                        <Route path = "/profile" element={<Account setIsAuthenticated={setIsAuthenticated}/>}/>
                         <Route path = "/signup" element={<Signup/>}/>
                         <Route path = "/details/Toko/:id" element={<Details_Toko/>}/>
                         {/* <Route path="/users" element={<UserList />} /> */}
                         <Route path="/users/table" element={<UserTable />} />
-                        <Route path="/profile" element={<UserTable />} />
+                        <Route path="/profiles" element={<ProfilesList />} />
+                        <Route path="/profiles/:profileId" element={<ProfilePage />} />
                     </Routes>
                 </div>
             </div>
