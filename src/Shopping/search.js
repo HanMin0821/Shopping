@@ -37,27 +37,33 @@ const SearchComponent = () => {
 
 
             <h3>Search Results</h3>
-            <ul className="list-group col-9">
+            <div className="row">
+                <div className="row row-cols-1 row-cols-md-5 g-3">
                 {results &&
                     results.map((r) => (
-                        <li key={r.slug} className="list-group-item">
-                            <img
-                                src={`${r.image}`}
-                            />
-                            <h3>
-                                <Link
-                                    to={`/shopping/details/Toko/${encodeURIComponent(extractRealSlug(r.slug))}`}>Name: {r.title}
-                                </Link>
-                            </h3>
-                            <h4>Price: {r.price}</h4>
-                        </li>
+                        <div className="col" style={{width: 300}}>
+                            <div key={r.slug}  className="card" style={{height:500}}>
+                                <img src={`${r.image}`} className="card-img-top" style={{height:300}}/>
+                                    <div className="card-body">
+                                        <h5 className="card-title">
+                                            <Link
+                                                to={`/shopping/details/Toko/${encodeURIComponent(extractRealSlug(r.slug))}`}>Name: {r.title}
+                                            </Link>
+                                        </h5>
+                                        <p className="card-text">Price: {r.price}</p>
+                                    </div>
+                            </div>
+                        </div>
                     ))}
-            </ul>
-
-
+                </div>
+            </div>
 
 
         </div>
     );
 }
 export default SearchComponent;
+
+
+
+
