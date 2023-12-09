@@ -82,4 +82,3 @@ export const fetchCurrentUser = async () => {
     return response.data;
 }
 
-

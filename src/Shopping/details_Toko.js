@@ -3,12 +3,16 @@ import React, {useState, useEffect} from 'react';
 import * as client from "./clients";
 import * as userClient from "./users/client"
 import * as likeClient from "./likes/client"
+import {deleteUserLikeItem} from "./clients";
 
 function Details_Toko() {
     const id = decodeURIComponent(useParams().id);
     const [item, setItem] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
     const [likes, setLikes] = useState(0);
+    const [isLike, setIsLike] = useState(false);
+
+
 
     const fetchItem = async () => {
         const item = await client.fetchItemById(id);
@@ -26,6 +30,13 @@ function Details_Toko() {
         const like = await likeClient.createUserLikeItem(id, currentUser._id)
         setLikes([like, ...likes]);
         fetchUsersLikeItem();
+        setIsLike(true);
+    }
+    const deleteUserLikeItem = async () => {
+        const unlike = await likeClient.deleteUserLikeItem(id, currentUser._id)
+        setLikes(likes.filter((u) => u.user._id !== currentUser._id));
+        fetchUsersLikeItem();
+        setIsLike(false);
     }
 
     useEffect(() => {
@@ -37,6 +48,11 @@ function Details_Toko() {
     if (!item) {
         return <div>Loading...</div>;
     }
+
+
+
+    let likeButton =  <button onClick={createUserLikeItem}>Likes</button>
+    let unlikeButton = <button onClick={deleteUserLikeItem}>Unlike</button>
 
     return (
         <div>
@@ -56,10 +72,14 @@ function Details_Toko() {
                             <hr/>
                             <p class="card-text"><small class="text-body-secondary">Name of
                                 Seller: {item.seller.name}</small></p>
+
+
                             <div className="row">
-                                {currentUser && ( <div className="col">
-                                    <button onClick={createUserLikeItem}>Likes</button>
-                                </div>)}
+                                <div className="col">
+                                    {currentUser && currentUser.role === "BUYER"&&(
+                                        isLike ? unlikeButton : likeButton
+                                    )}
+                                </div>
 
                                 <div className="col">
                                     {likes.map((u) => (
