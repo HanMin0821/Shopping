@@ -140,7 +140,7 @@ function Account({ setIsAuthenticated }) {
           <ul>
               {likedItemIds.map(itemId => (
                 <li key={itemId}>
-                    <Link to={`/shopping/details/Toko/${encodeURIComponent(itemId)}`}>Item ID: {itemId}</Link>
+                    <Link to={`/shopping/details/${encodeURIComponent(itemId)}`}>Item ID: {itemId}</Link>
                 </li>
               ))}
           </ul>

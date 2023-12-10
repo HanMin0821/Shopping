@@ -51,8 +51,8 @@ function Details_Toko() {
 
 
 
-    let likeButton =  <button onClick={createUserLikeItem}>Likes</button>
-    let unlikeButton = <button onClick={deleteUserLikeItem}>Unlike</button>
+    let likeButton =  <button onClick={createUserLikeItem} className="btn btn-primary">Likes</button>
+    let unlikeButton = <button onClick={deleteUserLikeItem} className="btn btn-primary">Unlike</button>
 
     return (
         <div>

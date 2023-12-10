@@ -45,7 +45,7 @@ function ProfilePage({ isAuthenticated }) {
                     <ul>
                         {items.map(item => (
                             <li key={item._id}>
-                                <Link to={`/shopping/item/${item._id}`}>{item.name}</Link>
+                                <Link to={`/shopping/home/item/${item._id}`}>{item.name}</Link>
                             </li>
                         ))}
                     </ul>

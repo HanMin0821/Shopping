@@ -27,13 +27,13 @@ const SearchComponent = () => {
 
     return (
         <div>
-            <input
+            <input className="custom-input"
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search..."
             />
-            <button onClick={handleSearch}>Search</button>
+            <button onClick={handleSearch}  className="btn btn-primary custom-button">Search</button>
 
 
             <h3>Search Results</h3>
@@ -47,7 +47,7 @@ const SearchComponent = () => {
                                     <div className="card-body">
                                         <h5 className="card-title">
                                             <Link
-                                                to={`/shopping/details/Toko/${encodeURIComponent(extractRealSlug(r.slug))}`}>Name: {r.title}
+                                                to={`/shopping/details/${encodeURIComponent(extractRealSlug(r.slug))}`}>Name: {r.title}
                                             </Link>
                                         </h5>
                                         <p className="card-text">Price: {r.price}</p>

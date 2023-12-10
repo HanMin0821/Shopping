@@ -29,7 +29,7 @@ function Shopping(){
             <div className="row">
                 <div className="col-2">
                     <div className="nav-bar">
-                        <Link to = "/" className="list-group-item list-group-item-primary" >
+                        <Link to = "/shopping/home" className="list-group-item list-group-item-primary" >
                             <FontAwesomeIcon icon={faHome}  size="2x"/>Home
                         </Link>
 
@@ -52,13 +52,14 @@ function Shopping(){
                 <div className="col-10">
                     <Routes>
                         <Route path = "/" element={<Home/>}/>
-                        <Route path = "/item/:id" element={<Detail/>}/>
+                        <Route path = "/home" element={<Home/>}/>
+                        <Route path = "/home/item/:id" element={<Detail/>}/>
                         <Route path = "/search" element={<Search/>}/>
                         <Route path = "/signin" element={<Signin setIsAuthenticated={setIsAuthenticated} />}/>
                         {/* <Route path = "/signout" element={<Signout/>}/> */}
                         <Route path = "/profile" element={<Account setIsAuthenticated={setIsAuthenticated}/>}/>
                         <Route path = "/signup" element={<Signup/>}/>
-                        <Route path = "/details/Toko/:id" element={<Details_Toko/>}/>
+                        <Route path = "/details/:id" element={<Details_Toko/>}/>
                         {/* <Route path="/users" element={<UserList />} /> */}
                         <Route path="/users/table" element={<UserTable />} />
                         <Route path="/profiles" element={<ProfilesList />} />

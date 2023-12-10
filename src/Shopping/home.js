@@ -85,7 +85,6 @@ function Home() {
 
                 <h2>Latest Products</h2>
                 <hr/>
-                {/*<pre>{JSON.stringify(items,null,2)}</pre>*/}
                 <div className="row">
                     <div className="row row-cols-1 row-cols-md-5 g-2">
                         {items.map((item) => (
