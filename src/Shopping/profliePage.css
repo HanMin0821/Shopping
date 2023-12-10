@@ -1,0 +1,49 @@
+/* General styling for the container */
+.user-profile-container {
+    padding: 20px;
+    font-family: Arial, sans-serif; /* Professional font */
+}
+
+/* Header styling */
+.user-profile-container h1 {
+    color: #333; /* Dark text color */
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Styling for user information paragraphs */
+.user-profile-container p {
+    color: #555; /* Slightly lighter text color */
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Styling for lists of items */
+.user-profile-container ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.user-profile-container li {
+    background-color: #f8f9fa; /* Light background for list items */
+    border: 1px solid #ddd; /* Light border for list items */
+    padding: 10px;
+    margin-bottom: 10px; /* Space between list items */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.user-profile-container li:hover {
+    background-color: #e9ecef; /* Slightly darker background on hover */
+}
+
+/* Styling for links */
+.user-profile-container a {
+    text-decoration: none;
+    color: #007bff; /* Blue color for links */
+    font-weight: bold;
+}
+
+.user-profile-container a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}

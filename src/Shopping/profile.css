@@ -1,4 +1,49 @@
+/* General styling for the container */
 .profile-container {
-  width: 300px;
-  margin: auto;
+  font-family: Arial, sans-serif; /* Choose a professional font */
+  padding: 20px;
+}
+
+/* Styling for the header */
+.profile-container h1 {
+  color: #333; /* Dark color for text */
+  margin-bottom: 20px;
+}
+
+/* Styling for role titles */
+.profile-container h2 {
+  color: #007bff; /* Blue color for role titles */
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee; /* Light border under the role title */
+  padding-bottom: 5px;
+}
+
+/* Styling for profile lists */
+.profile-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.profile-container li {
+  background-color: #f8f9fa; /* Light background for list items */
+  border: 1px solid #ddd; /* Light border for list items */
+  padding: 10px;
+  margin-bottom: 10px; /* Space between list items */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.profile-container li:hover {
+  background-color: #e9ecef; /* Slightly darker background on hover */
+}
+
+/* Styling for links */
+.profile-container a {
+  text-decoration: none;
+  /* color: #007bff; Blue color for links */
+  font-weight: bold;
+}
+
+.profile-container a:hover {
+  text-decoration: underline; /* Underline on hover for links */
 }

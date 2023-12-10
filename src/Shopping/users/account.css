@@ -1,27 +1,70 @@
+/* Container for the entire account section */
 .account-container {
-    max-width: 768px;
-    margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif; /* Professional font */
+}
+
+/* Header styling */
+.account-container h1 {
+  color: #333; /* Dark text color */
+  margin-bottom: 20px;
+}
+
+/* Styling for forms within the account section */
+.account-form {
+  background-color: #f8f9fa; /* Light background */
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #ddd; /* Light border for distinction */
+}
+
+/* Styling for labels */
+.account-form label {
+  display: block; /* Ensure labels are block-level for better alignment */
+  margin-bottom: 5px; /* Space between label and input */
+  color: #007bff; /* Blue color for labels */
+  font-weight: bold;
+}
+
+/* Styling for inputs and selects */
+.account-form input,
+.account-form select {
+  width: 100%; /* Full width */
+  padding: 10px; /* Increased padding for better touch area */
+  margin-bottom: 15px; /* Space after each input/select */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Increased spacing for list items */
+.account-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.account-container ul li {
+  margin-bottom: 10px;
+}
+
+/* Link styling within list */
+.account-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.account-container a:hover {
+  text-decoration: underline;
+}
+
+
+/* For responsive adjustments */
+@media (max-width: 768px) {
+  .account-container {
+      padding: 10px;
   }
-  
-  .account-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-  }
-  
-  .account-form label {
-    font-weight: bold;
-  }
-  
-  .account-form input,
-  .account-form select {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+}
+
   
   .save-button {
     background-color: #007bff;

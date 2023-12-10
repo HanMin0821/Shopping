@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { findAllUserProfiles } from './users/client'; // Import the function from client.js
+import "./profile.css"
 
 function ProfilesList() {
     const [profiles, setProfiles] = useState([]);
@@ -31,7 +32,7 @@ function ProfilesList() {
 
 
     return (
-        <div>
+        <div className="profile-container">
             <h1>User Profiles</h1>
             <Link to="../profile" className="btn btn-primary">
                 Go to My Account

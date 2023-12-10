@@ -121,7 +121,7 @@ function Account({ setIsAuthenticated }) {
             <option value="ADMIN">Admin</option>
             <option value="SELLER">Seller</option>
           </select>
-          <br/><br/>
+          <br/>
           <button onClick={save} className="save-button w-100">
             Save
           </button>
@@ -129,7 +129,7 @@ function Account({ setIsAuthenticated }) {
           <button onClick={signout} className="signout-button w-100">
             Sign Out
           </button>
-
+          <br/>
           {account.role === "ADMIN" && (
             <Link to="/Shopping/users/table" className="btn btn-warning w-100">
               Users

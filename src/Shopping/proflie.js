@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { findUserProfileById, findItemsBySeller } from './users/client'; // Import the function from client.js
 import './index.css';
+import './profliePage.css'
 
 function ProfilePage({ isAuthenticated }) {
     const [user, setUser] = useState(null);
@@ -31,7 +32,7 @@ function ProfilePage({ isAuthenticated }) {
     }
 
     return (
-        <div>
+      <div className="user-profile-container">
             <h1>User Profile</h1>
             <p>Username: {user.username}</p>
             <p>Role: {user.role}</p>
