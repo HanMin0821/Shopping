@@ -62,7 +62,7 @@ function Account({ setIsAuthenticated }) {
     <div className="account-container">
       <h1>Account</h1>
       {account && (
-        <div lassName="account-form">
+        <div >
           {/* <p>Username: {account.username}</p> */}
           <label htmlFor="username">Username</label>
           <input
