@@ -25,16 +25,6 @@ function Detail() {
             console.error("Error fetching item:", error);
         }
     };
-    // const fetchCurrentUser = async () => {
-    //     const user = await userClient.account();
-    //     setCurrentUser(user);
-    // }
-
-    // const createUserLikeItem = async () => {
-    //     const like = await likeClient.createUserLikeHomeItem(id, currentUser._id)
-    //     setLikes([like, ...likes]);
-    //     fetchUsersLikeItem();
-    // }
 
 
     useEffect(() => {
@@ -72,37 +62,6 @@ function Detail() {
                               style={{textDecoration: 'none', color: 'seagreen'}}><p
                             className="card-text">Seller: {item.seller}</p></Link>
                     </small>
-
-
-
-
-                    {/*{currentUser && currentUser.role === "BUYER" &&*/}
-                    {/*    (<button onClick={createUserLikeItem}>Likes</button>)}*/}
-                    {/*<pre>{JSON.stringify(likes, null, 2)}</pre>*/}
-
-                    {/*{likes.map(like => (*/}
-                    {/*    <h3>{like.user.username}</h3>*/}
-                    {/*))}*/}
-                        {/*<div className="col">*/}
-                        {/*    {likes.map((u) => (*/}
-                        {/*        <div key={u._id}>*/}
-                        {/*            <Link to={`/shopping/profiles/${u.user._id}`}*/}
-                        {/*                  style={{textDecoration: 'none', color: 'seagreen'}}><p*/}
-                        {/*                className="card-text">{u.user.username}</p></Link>*/}
-                        {/*        </div>*/}
-                        {/*    ))}*/}
-                        {/*</div>*/}
-
-                        {/*{likes.map((u) => (*/}
-                        {/*    <div key={u._id}>*/}
-                        {/*        <Link to={`/shopping/profiles/${u.user._id}`}*/}
-                        {/*              style={{textDecoration: 'none', color: 'seagreen'}}><p*/}
-                        {/*            className="card-text">{u.user.username}</p></Link>*/}
-                        {/*    </div>*/}
-                        {/*))}*/}
-
-
-
                 </div>
             </div>
     </div>);
