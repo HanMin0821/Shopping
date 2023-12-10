@@ -12,6 +12,9 @@ import {API_KEY} from "./clients";
 import Details_Toko from "./details_Toko";
 import "./index.css"
 import ProfilesList from "./profilesList";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faSearch, faUserPlus, faSignInAlt, faUser } from '@fortawesome/free-solid-svg-icons'
+
 
 function Shopping(){
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,30 +23,29 @@ function Shopping(){
     return(
 
         <div className="container-fluid">
-            <h1>Shopping</h1>
+            <div class="shopping-banner">
+            <h1>Shopping Page</h1>
+            </div>
             <div className="row">
                 <div className="col-2">
-                    <div className="list-group">
+                    <div className="nav-bar">
                         <Link to = "/" className="list-group-item list-group-item-primary" >
-                            Home
+                            <FontAwesomeIcon icon={faHome}  size="2x"/>Home
                         </Link>
 
-                        {/*<Link to = "/shopping/account" className="list-group-item list-group-item-primary">*/}
-                        {/*    Account*/}
-                        {/*</Link>*/}
                         <Link to = "/shopping/search" className="list-group-item list-group-item-primary">
-                            Search
+                            <FontAwesomeIcon icon={faSearch}  size="2x"/>Search
                         </Link>
                         <Link to = "/shopping/signup" className="list-group-item list-group-item-primary">
-                            Signup
+                            <FontAwesomeIcon icon={faUserPlus}  size="2x"/>Signup
                         </Link>
                         {!isAuthenticated && (
                             <Link to="/shopping/signin" className="list-group-item list-group-item-primary">
-                                SignIn
+                                <FontAwesomeIcon icon={faSignInAlt}  size="2x"/>SignIn
                             </Link>
                         )}
                         <Link to = "/shopping/profiles" className="list-group-item list-group-item-primary">
-                            Profile
+                            <FontAwesomeIcon icon={faUser}  size="2x"/>Profile
                         </Link>
                     </div>
                 </div>

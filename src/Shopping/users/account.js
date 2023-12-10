@@ -71,7 +71,7 @@ function Account({ setIsAuthenticated }) {
             value={account.username}
             onChange={(e) => setAccount({ ...account, username: e.target.value })}
           />
-          <br/>
+          <br/><br/>
 
           <label htmlFor="firstName">First Name</label>
           <input
@@ -82,7 +82,7 @@ function Account({ setIsAuthenticated }) {
               setAccount({ ...account, firstName: e.target.value })
             }
           />
-          <br/>
+          <br/><br/>
 
           <label htmlFor="lastName">Last Name</label>
           <input
@@ -91,7 +91,7 @@ function Account({ setIsAuthenticated }) {
             value={account.lastName}
             onChange={(e) => setAccount({ ...account, lastName: e.target.value })}
           />
-          <br/>
+          <br/><br/>
 
           <label htmlFor="dob">Date of Birth</label>
           <input
@@ -100,7 +100,7 @@ function Account({ setIsAuthenticated }) {
             value={account.dob}
             onChange={(e) => setAccount({ ...account, dob: e.target.value })}
           />
-          <br/>
+          <br/><br/>
 
           <label htmlFor="email">Email</label>
           <input
@@ -109,7 +109,7 @@ function Account({ setIsAuthenticated }) {
             value={account.email}
             onChange={(e) => setAccount({ ...account, email: e.target.value })}
           />
-          <br/>
+          <br/><br/>
 
           <label htmlFor="role">Role</label>
           <select
@@ -121,7 +121,7 @@ function Account({ setIsAuthenticated }) {
             <option value="ADMIN">Admin</option>
             <option value="SELLER">Seller</option>
           </select>
-          <br/>
+          <br/><br/>
           <button onClick={save} className="save-button w-100">
             Save
           </button>

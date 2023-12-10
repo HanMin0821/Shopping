@@ -1,3 +1,56 @@
 .wd-table-head{
     background: #1273de;
 }
+.shopping-banner {
+    background-color: #1273de; /* Blue background */
+    color: white;          /* White text */
+    text-align: center;    /* Center the text horizontally */
+    padding: 20px 0;       /* Some padding for top and bottom */
+    font-size: 30px;       /* Size of the text */
+    font-weight: bold;     /* Make the text bold */
+    margin: 0;             /* Optional: Remove default margin if any */
+    width: 100%;           /* Optional: Make it full width */
+}
+
+/* General styling for the navigation bar */
+.nav-bar {
+    display: flex;
+    flex-direction: column; /* Adjust to 'row' for a horizontal layout */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: #f8f9fa; /* Light background color */
+}
+
+
+/* Active link styling */
+.nav-bar .list-group-item.active {
+    background-color: #007bff; /* Blue background for active link */
+    color: white;
+}
+
+.nav-bar .list-group-item i,
+.nav-bar .list-group-item .fa {
+    margin-right: 8px; /* Spacing between icon and text */
+}
+.nav-bar .list-group-item {
+    display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center;   /* Center align items */
+    justify-content: center; /* Center vertically */
+    text-decoration: none;
+    color: #007bff;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #e7e7e7;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.nav-bar .list-group-item:hover {
+    background-color: #e7e7e7;
+}
+
+.nav-bar .list-group-item div {
+    margin-top: 8px; /* Space between icon and text */
+}
