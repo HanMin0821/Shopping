@@ -26,27 +26,42 @@ function Signin({ setIsAuthenticated }) {
     }
   };
   return (
-    <div>
-      <h2>Sign In</h2>
-       {error && <div className="error">{error}</div>}
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        className="form-control"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={signIn} className="btn btn-primary">
-        Sign In
-      </button>
+    <div class="tab-content mt-5">
+      <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+        <form onSubmit={signIn}>
+          {error && <div className="error">{error}</div>}
+          <h3>Sign In</h3>
+          <div class="form-outline mb-4">
+            <input 
+              type="text"
+              id="loginName"
+              class="form-control"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label class="form-label" for="loginName">Username</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input 
+              type="password"
+              id="loginPassword"
+              class="form-control"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <label class="form-label" for="loginPassword">Password</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+          <div>
+            <p>Not a member?<Link to = "/shopping/signup">Signup</Link></p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
+
 export default Signin;

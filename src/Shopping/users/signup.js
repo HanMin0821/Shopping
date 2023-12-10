@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import * as client from "./client";
 import "./sign.css";
 
@@ -22,46 +22,55 @@ function Signup() {
   };
 
   return (
-    <div className="signup-container">
-      <h1>Sign Up</h1>
-      {error && <div className="error">{error}</div>}
-      <input
-        type="text"
-        placeholder="Username"
-        value={credentials.username}
-        onChange={(e) =>
-          setCredentials({
-            ...credentials,
-            username: e.target.value,
-          })
-        }
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={credentials.password}
-        onChange={(e) =>
-          setCredentials({
-            ...credentials,
-            password: e.target.value,
-          })
-        }
-      />
-      <label>
-          Role:
-          <select
-            value={credentials.role}
-            onChange={(e) =>
-              setCredentials({ ...credentials, role: e.target.value })
-            }
-          >
-            <option value="BUYER">Buyer</option>
-            <option value="SELLER">Seller</option>
-            <option value="ADMIN">Admin</option>
-          </select>
-        </label>
+    <div class="tab-content mt-5">
+      <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+        <form onSubmit={signup}>
+          {error && <div className="error">{error}</div>}
+          <h3>Sign Up</h3>
 
-      <button onClick={signup}>Sign Up</button>
+          <div class="form-outline mb-4">
+            <input 
+              type="text"
+              id="registerUsername"
+              class="form-control"
+              value={credentials.username}
+              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+            />
+            <label class="form-label" for="registerUsername">Username</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input 
+              type="password"
+              id="registerPassword"
+              class="form-control"
+              value={credentials.password}
+              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+            />
+            <label class="form-label" for="registerPassword">Password</label>
+          </div>
+
+          <div class="mb-4">
+          <label class="form-label" for="registerRole">Role</label>
+            <select
+              id="registerRole"
+              // class="form-control"
+              value={credentials.role}
+              onChange={(e) => setCredentials({ ...credentials, role: e.target.value })}
+            >
+              <option value="BUYER">Buyer</option>
+              <option value="SELLER">Seller</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mb-4">Sign Up</button>
+
+          <div>
+            <p>Already a member?<Link to="/shopping/signin">SignIn</Link></p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
