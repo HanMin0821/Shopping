@@ -27,7 +27,8 @@ function Account({ setIsAuthenticated }) {
       const user = await client.account();
       if (user) {
         setAccount(user);
-        loadLikedItemIds(user._id); // Load liked items for this user
+        loadLikedItemIds(user._id);
+        console.log(user._id)// Load liked items for this user
       }
     } catch (error) {
       console.error("Error fetching user:", error);
