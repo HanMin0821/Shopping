@@ -25,7 +25,8 @@ function Account({ setIsAuthenticated }) {
   const fetchUser = async () => {
     try {
       const user = await client.account();
-      console.log(user._id);
+      console.log("user: " + user);
+      console.log("user_id: " + user._id);
       if (user) {
         setAccount(user);
         console.log(user);
