@@ -25,7 +25,7 @@ function Account({ setIsAuthenticated }) {
   const fetchUser = async () => {
     try {
       const user = await client.account();
-      setAccount(user);
+      console.log(user._id);
       if (user) {
         setAccount(user);
         console.log(user);
@@ -40,12 +40,12 @@ function Account({ setIsAuthenticated }) {
 
   const loadLikedItemIds = async (userId) => {
     try {
-        const itemIds = await fetchLikedItemsByUserId(userId);
-        setLikedItemIds(itemIds);
+      const itemIds = await fetchLikedItemsByUserId(userId);
+      setLikedItemIds(itemIds);
     } catch (error) {
-        console.error('Error fetching liked item IDs:', error);
+      console.error('Error fetching liked item IDs:', error);
     }
-};
+  };
 
 
   const save = async () => {
@@ -62,96 +62,96 @@ function Account({ setIsAuthenticated }) {
   }, []);
 
   return (
-    <div className="account-container">
-      <h1>Account</h1>
-      {account && (
-        <div >
-          {/* <p>Username: {account.username}</p> */}
-          <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            type="text"
-            value={account.username}
-            onChange={(e) => setAccount({ ...account, username: e.target.value })}
-          />
-          <br/><br/>
+      <div className="account-container">
+        <h1>Account</h1>
+        {account && (
+            <div >
+              {/* <p>Username: {account.username}</p> */}
+              <label htmlFor="username">Username</label>
+              <input
+                  id="username"
+                  type="text"
+                  value={account.username}
+                  onChange={(e) => setAccount({ ...account, username: e.target.value })}
+              />
+              <br/><br/>
 
-          <label htmlFor="firstName">First Name</label>
-          <input
-            id="firstName"
-            type="text"
-            value={account.firstName}
-            onChange={(e) =>
-              setAccount({ ...account, firstName: e.target.value })
-            }
-          />
-          <br/><br/>
+              <label htmlFor="firstName">First Name</label>
+              <input
+                  id="firstName"
+                  type="text"
+                  value={account.firstName}
+                  onChange={(e) =>
+                      setAccount({ ...account, firstName: e.target.value })
+                  }
+              />
+              <br/><br/>
 
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            id="lastName"
-            type="text"
-            value={account.lastName}
-            onChange={(e) => setAccount({ ...account, lastName: e.target.value })}
-          />
-          <br/><br/>
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                  id="lastName"
+                  type="text"
+                  value={account.lastName}
+                  onChange={(e) => setAccount({ ...account, lastName: e.target.value })}
+              />
+              <br/><br/>
 
-          <label htmlFor="dob">Date of Birth</label>
-          <input
-            id="dob"
-            type="date"
-            value={account.dob}
-            onChange={(e) => setAccount({ ...account, dob: e.target.value })}
-          />
-          <br/><br/>
+              <label htmlFor="dob">Date of Birth</label>
+              <input
+                  id="dob"
+                  type="date"
+                  value={account.dob}
+                  onChange={(e) => setAccount({ ...account, dob: e.target.value })}
+              />
+              <br/><br/>
 
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            value={account.email}
-            onChange={(e) => setAccount({ ...account, email: e.target.value })}
-          />
-          <br/><br/>
+              <label htmlFor="email">Email</label>
+              <input
+                  id="email"
+                  type="email"
+                  value={account.email}
+                  onChange={(e) => setAccount({ ...account, email: e.target.value })}
+              />
+              <br/><br/>
 
-          <label htmlFor="role">Role</label>
-          <select
-            id="role"
-            value={account.role}
-            onChange={(e) => setAccount({ ...account, role: e.target.value })}
-          >
-            <option value="BUYER">Buyer</option>
-            <option value="ADMIN">Admin</option>
-            <option value="SELLER">Seller</option>
-          </select>
-          <br/>
-          <button onClick={save} className="save-button w-100">
-            Save
-          </button>
-          <br/>
-          <button onClick={signout} className="signout-button w-100">
-            Sign Out
-          </button>
-          <br/>
-          {account.role === "ADMIN" && (
-            <Link to="/Shopping/users/table" className="btn btn-warning w-100">
-              Users
-            </Link>
-          )}
-          {/* Liked Items Section */}
-          <h2>My Liked Items</h2>
-          <ul>
-              {likedItemIds.map(itemId => (
-                <li key={itemId}>
-                    <Link to={`/shopping/details/${encodeURIComponent(itemId)}`}>Item ID: {itemId}</Link>
-                </li>
-              ))}
-          </ul>
-{/* <pre>{JSON.stringify(likedItemIds)}</pre> */}
+              <label htmlFor="role">Role</label>
+              <select
+                  id="role"
+                  value={account.role}
+                  onChange={(e) => setAccount({ ...account, role: e.target.value })}
+              >
+                <option value="BUYER">Buyer</option>
+                <option value="ADMIN">Admin</option>
+                <option value="SELLER">Seller</option>
+              </select>
+              <br/>
+              <button onClick={save} className="save-button w-100">
+                Save
+              </button>
+              <br/>
+              <button onClick={signout} className="signout-button w-100">
+                Sign Out
+              </button>
+              <br/>
+              {account.role === "ADMIN" && (
+                  <Link to="/Shopping/users/table" className="btn btn-warning w-100">
+                    Users
+                  </Link>
+              )}
+              {/* Liked Items Section */}
+              <h2>My Liked Items</h2>
+              <ul>
+                {likedItemIds.map(itemId => (
+                    <li key={itemId}>
+                      <Link to={`/shopping/details/${encodeURIComponent(itemId)}`}>Item ID: {itemId}</Link>
+                    </li>
+                ))}
+              </ul>
+              {/* <pre>{JSON.stringify(likedItemIds)}</pre> */}
 
-        </div>
-      )}
-    </div>
+            </div>
+        )}
+      </div>
   );
 }
 
